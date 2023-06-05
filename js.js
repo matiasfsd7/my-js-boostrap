@@ -1,4 +1,4 @@
-import "bootstrap/dist/js/bootstrap";
+// AQUI ELIMINE EL IMPORT PORQUE NO HACE FALTA YA QUE ESTAS IMPORTANDO LOS ESTILOS EN EL ARCHIVO CSS
 
 const MOCKDATA = [
   {
@@ -209,21 +209,40 @@ const MOCKDATA = [
   },
 ];
 
-const root = document.getElementById("root");
+const catalogue = document.getElementById("catalogue");
+const products = MOCKDATA.sort((a, b) => b.price - a.price);
 
-MOCKDATA.forEach((data) => {
+products.forEach((data) => {
   const card = document.createElement("div");
-  card.className = "card";
+  const asc = document.getElementById("asc");
+  const desc = document.getElementById("desc");
+  asc.addEventListener("click", () => {
+    asc.className = "btn btn-success disable";
+    desc.className = "btn btn-online-success ";
+    products.sort((a, b) => a.price - b.price);
+  });
+  desc.addEventListener("click", () => {
+    desc.className = "btn btn-success disable";
+    asc.className = "btn btn-online-success ";
+    products.sort((a, b) => b.price - a.price);
+  });
+
+  card.className = "card w-25 p-3 m-3 shadow"; // Preguntar el colum para que quede prolijo
   card.innerHTML = `
-<div class="card" style="width: 18rem;">
-  <img src=${data.image} class="card-img-top" alt="...">
+  <!--AQUI BORRE EL DIV QUE ENCERRABA TODO EL CONTENIDO PORQUE NO HACIA FALTA YA QUE AHORA LO ENCERRARA EL DIV QUE SE CREA ANTES-->
+  <article class= "card h-100">
+  <h6 class="pt-2 px-2"><span class="badge bg-secundary text-uppercase">${data.category}</span></h6>
+  <img src=${data.image} class="objet-fit-contain pt-2 px-2" alt=${data.title} style="height: 300px">
   <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <h6 class="card-title">${data.title}</h6>
+    </div>
+    <div class="card-footer d-flex flex-column">
+    <p class="h5 text-end">${data.price}</p>
+
+    <button class="btn btn-primary" onClick="alert("comprado!");">COMPRAR!</button>
   </div>
-</div>
+  </article>
 `;
   console.log(card);
-  root.appendChild(card);
+  catalogue.appendChild(card);
 });
