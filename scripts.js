@@ -12,12 +12,18 @@ const desc = document.getElementById("desc");
 asc.addEventListener("click", () => {
   asc.className = "btn btn-success disable";
   desc.className = "btn btn-online-success ";
-  renderProducts(products.sort((a, b) => a.price - b.price)), catalogue;
+  renderProducts(
+    products.sort((a, b) => a.price - b.price),
+    catalogue
+  );
 });
 desc.addEventListener("click", () => {
   desc.className = "btn btn-success disable";
   asc.className = "btn btn-online-success ";
-  renderProducts(products.sort((a, b) => b.price - a.price)), catalogue;
+  renderProducts(
+    products.sort((a, b) => b.price - a.price),
+    catalogue
+  );
 });
 
 renderProducts(products, catalogue);

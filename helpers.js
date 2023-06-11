@@ -3,7 +3,7 @@ export const renderProducts = (array, id) => {
   array.forEach((data) => {
     const card = document.createElement("div");
     card.className = "card w-25 p-3 m-3 shadow"; // Preguntar el colum para que quede prolijo
-    card.innerHTML = `
+    card.innerHTML = /* HTML */ `
   <!--AQUI BORRE EL DIV QUE ENCERRABA TODO EL CONTENIDO PORQUE NO HACIA FALTA YA QUE AHORA LO ENCERRARA EL DIV QUE SE CREA ANTES-->
   <article class= "card h-100">
   <h6 class="pt-2 px-2"><span class="badge bg-${
@@ -22,7 +22,7 @@ export const renderProducts = (array, id) => {
   </div>
   </article>
 `;
-    console.log(card);
+
     catalogue.appendChild(card);
   });
 };
